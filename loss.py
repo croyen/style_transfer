@@ -36,7 +36,7 @@ def get_loss_grad(noise, net, P, A, layer_content, style_weights, ratio, shape):
         else:
             bottom_layer = None
 
-        # create alias, (does not copy, any modification of grad affect the current layer's blob)
+        # copy the chunk to avoid trouble
         grad = net.blobs[layer].diff[0].copy()
 
         if layer in layers_style:
